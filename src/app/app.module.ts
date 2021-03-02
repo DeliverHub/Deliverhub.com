@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    GeocoderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCUG8nuf7xCD2P8Sc8eQ9C63MQhB48S1Dk'
     }),
