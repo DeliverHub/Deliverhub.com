@@ -1,0 +1,288 @@
+<body class="view-vendor-menu">
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+  <main role="main">
+     <section class="vendor-menu">
+        <div class="container">
+           <div class="row">
+              <div class="col">
+                 <div class="vendor-info">
+                  <div class="logo-frame">
+                     <img class="logo"
+                          [src]="imagepath+resturants.kitchen.profileImagePath"
+                     />
+                   </div>
+                <br>
+                <br>
+
+                   
+         
+                  
+         
+                 </div>
+              </div>
+           </div>
+        </div>
+     </section>
+     <section class="menu">
+        <div class="container">
+           <div class="row main justify-content-center" id="main-content">
+              <div class="col one">
+               <div class="order-info d-flex justify-content-between">
+                  <div class="eta">
+                     <span class="title">Restaurant Name :  {{resturants?.kitchen.restaurant_Name}}</span>
+                   
+                  </div>
+                
+               </div>
+                 <div class="order-info d-flex justify-content-between">
+                    <div class="eta">
+                       <span class="title">Delivery Time</span>
+                       <span class="desc">45 min</span>
+                    </div>
+                    <div class="min-amount">
+                       <span class="title">Min. Order</span>
+                       <span class="desc">Rs. 100</span>
+                    </div>
+                    <div class="payment-type">
+                       <span class="title">Payment Type</span>
+                       <span class="desc">Cash &amp; Online</span>
+                    </div>
+                 </div>
+              <br><br>
+                 <div class="dishes-navbar-wrapper">
+                    <nav class="navbar dishes-navbar-container mb-3">
+                       <ul class="navbar-nav dishes-navbar-content flex-row">
+                          <li class="nav-item-1" *ngFor="let item of resturants.menucategorey">
+                             <a id="{{item.menucategoreyId}}" class="nav-link">{{item.categoreyName}}</a>
+                          </li>
+                       
+                       </ul>
+                    </nav>
+                    <button id="arrow-left" class="btn-nav">
+                    <i class="fas fa-angle-left"></i>
+                    </button>
+                    <button id="arrow-right" class="btn-nav">
+                    <i class="fas fa-angle-right"></i>
+                    </button>
+                 </div>
+                 <div class="categories mb-5">
+                    <section class="category" *ngFor="let item of resturants.menucategorey">
+                       <h2 class="heading" id="31917">{{item.categoreyName}}</h2>
+                       <div class="content" *ngFor="let item1 of item.dishes">
+                        <div class="item">
+                        <div class="row">
+                        <img style="height:60px ;width: 60px;" [src]="dishimage+item1.dishImage">
+                        
+                        
+                        <p class="name" style="padding-left:10px;">{{item1?.dishName}}</p>
+                        
+                        </div>
+                        
+                        <div class="controls">
+
+                        <p class="price"> &#163;{{item1?.dishPrice}}</p>
+                        <br>
+                        <button class="btn btn-secondary btn-add"
+                        (click)="addtocart(item1.dishId)">
+                        <img src="assets/images/icons/plus.svg" alt="">
+                        </button>
+                        </div>
+                        </div>
+                        <br>
+                        
+                        </div>
+                     
+                    </section>
+                 
+                 </div>
+              </div>
+              <div class="col two">
+                 <app-Cart></app-Cart>
+              </div>
+           </div>
+        </div>
+        <div class="row btn-view-cart-wrapper no-gutters shadow pt-3 pb-3">
+           <div class="col pl-3 pr-3">
+              <button class="btn btn-secondary btn-view-cart-mob w-100">
+              View Cart
+              </button>
+           </div>
+        </div>
+     </section>
+    
+  </main>
+  <!-- Modal -->
+  <div class="modal fade bs-modal-fix flex show"  tabindex="-1" id="modal-dish" role="dialog" >
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+       <!-- Modal content-->
+       <div class="modal-content">
+          <div class="modal-main-data" id="option-data" dish-id="243309" description="Bar BQ Chicken, Black Olives, Cheese" section_id="34471">
+             <div class="modal-header">
+                <h1 class="modal-title" id="dish-name">Chicken Bar BQ Pizza</h1>
+                <p id="dish-desc">Bar BQ Chicken, Black Olives, Cheese</p>
+                <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                <i class="fas fa-times"></i>
+                </button>
+             </div>
+             <div class="modal-body">
+                <div class="child-options">
+                   <h2 id="option_div_138755">Variation<span class="label required">(Required) </span><span class="label choose">Choose</span></h2>
+                   <div class="radio-group option_wrapper" id="138755" max-select-count="0" is_required="1">
+                      <div class="dish-radio-option radio one">
+                         <input type="radio" class="menu-options" id="555214" name="138755">
+                         <label for="555214">
+                         <span>7 Inch</span>
+                         <span class="price">390.0</span>
+                         </label>
+                      </div>
+                      <div class="dish-radio-option radio one">
+                         <input type="radio" class="menu-options" id="555215" name="138755" checked="">
+                         <label for="555215">
+                         <span>10 Inch</span>
+                         <span class="price">740.0</span>
+                         </label>
+                      </div>
+                      <div class="dish-radio-option radio one">
+                         <input type="radio" class="menu-options" id="555216" name="138755">
+                         <label for="555216">
+                         <span>13 Inch</span>
+                         <span class="price">1160.0</span>
+                         </label>
+                      </div>
+                      <div class="dish-radio-option radio one">
+                         <input type="radio" class="menu-options" id="555217" name="138755">
+                         <label for="555217">
+                         <span>16 Inch</span>
+                         <span class="price">1595.0</span>
+                         </label>
+                      </div>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                   <div class="controls">
+                      <button class="btn btn-secondary btn-remove item-btn-minus">
+                      <img src="https://www.eatmubarak.pk/images/icons/minus.svg" alt="">
+                      </button>
+                      <input name="qty" type="text" class="count" maxlength="3" value="1">
+                      <button class="btn btn-secondary btn-add item-btn-plus">
+                      <img src="https://www.eatmubarak.pk/images/icons/plus.svg" alt="">
+                      </button>
+                   </div>
+                   <a href="javascript:void(0)" dishid="243309" dishprice="0.00" class="btn btn-secondary add_to_basket has-option" id="cartSave">Add to cart</a>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ 
+   <div class="modal fade bs-modal-fix flex show"  tabindex="-1" id="modal-dish" role="dialog" >
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document"  >
+       <!-- Modal content-->
+       <div class="modal-content">
+         
+          <div class="modal-main-data" id="option-data" dish-id="243309"  section_id="34471">
+            <ng-template #content  >
+              <div mat-dialog-content>
+                <div class="modal-header" style="border:none">
+              
+                        <h1 class="modal-title" id="dish-name">Chicken Bar BQ Pizza</h1>
+                       
+                        <p mat-button mat-dialog-close class="pull-right">X</p>
+            
+                      
+               </div>
+               <div class="modal-body">
+                <p id="dish-desc">Bar BQ Chicken, Black Olives, Cheese</p>
+                  <div class="child-options">
+                     <h2 id="option_div_138755" class="variations">Variation<span class="required">(Required) </span><span class="choose label">Choose</span></h2>
+                     <div class="radio-group option_wrapper options"   >
+                        <div class="">
+                           <div class="row">
+                                <div class="col-md-6" >
+                                 <input type="radio"  name="138755" > <span style="padding-left:10px;">7 Inch</span>
+                               
+                                </div>
+                                <div class="col-md-6">
+                               
+                                 <span class="price">390.0</span>
+                               
+                              </div>
+                           </div>
+                         
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6" >
+                            <input type="radio"  name="138755" > <span style="padding-left:10px;">7 Inch</span>
+                          
+                           </div>
+                           <div class="col-md-6">
+                          
+                            <span class="price">390.0</span>
+                          
+                         </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6" >
+                         <input type="radio"  name="138755" > <span style="padding-left:10px;">7 Inch</span>
+                       
+                        </div>
+                        <div class="col-md-6">
+                       
+                         <span class="price">390.0</span>
+                       
+                      </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-6" >
+                      <input type="radio"  name="138755" > <span style="padding-left:10px;">7 Inch</span>
+                    
+                     </div>
+                     <div class="col-md-6">
+                    
+                      <span class="price">390.0</span>
+                    
+                   </div>
+                </div>
+                     </div>
+                  </div>
+                
+               </div>
+              </div>
+            
+           
+              
+                <div class="ff">
+                   
+                  <div class="controls kk">
+                     <button class="btn btn-secondary btn-remove item-btn-minus">
+                   -
+                     </button>
+                     <input name="qty" type="text" class="count" maxlength="3" value="1">
+                     <button class="btn btn-secondary btn-add item-btn-plus">
+                           +
+                     </button>
+                   
+                  </div>
+                
+              </div>
+              <div align="end" style="margin-top: -30px;">
+                <a href="javascript:void(0)" dishid="243309" dishprice="0.00" class="btn btn-secondary add_to_basket has-option" id="cartSave">Add to cart</a>
+              
+            
+              </div>
+               
+           
+          
+        
+            </ng-template>
+          </div>
+       </div>
+    </div>
+ </div>
