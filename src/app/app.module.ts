@@ -7,7 +7,7 @@ import { HeaderComponent } from './Pages/Header/Header.component';
 import { FooterComponent } from './Pages/Footer/Footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
-import { GeocoderModule } from 'angular-geocoder';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
@@ -23,11 +23,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    GeocoderModule,
+  
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCUG8nuf7xCD2P8Sc8eQ9C63MQhB48S1Dk'
     }),
-    GeocoderModule,
+   
     BrowserAnimationsModule 
   ],
   providers: [],
