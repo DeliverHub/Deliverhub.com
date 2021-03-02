@@ -34,7 +34,7 @@ this.lat=parseFloat(latlng[0]);
 this.lng=parseFloat(latlng[1]);
  
   }
-  Proceed(id:number){
+  Proceed(){
     debugger;
    
     this.data.changeMessage(this.resturants);
