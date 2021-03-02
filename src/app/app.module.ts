@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchbarComponent } from './Pages/Searchbar/Searchbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     HeaderComponent,
     FooterComponent,
+    SearchbarComponent
 
    
   ],
