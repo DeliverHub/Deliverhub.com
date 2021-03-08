@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('ID')
     localStorage.removeItem('token');
   this.router.navigate(['/home']);
+  return false;
   window.location.reload();
   }
 

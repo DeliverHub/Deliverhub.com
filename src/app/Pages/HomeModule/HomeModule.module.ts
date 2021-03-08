@@ -19,6 +19,8 @@ import { StoreCheckoutComponent } from './Grocerystore/storeCheckout/storeChecko
 import { AllGrocerystoresComponent } from './Grocerystore/AllGrocerystores/AllGrocerystores.component';
 import { StorecartComponent } from './Grocerystore/storecart/storecart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MyordersstoreComponent } from './Grocerystore/myordersstore/myordersstore.component';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     GooglePlaceModule,
     FormsModule,
+    NgxSpinnerModule,
     ReactiveFormsModule,
     
     AgmCoreModule.forRoot({
@@ -37,6 +40,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     
   ],
   providers:[GetrestaurantDto],
-  declarations: [HomeModuleComponent,StorecartComponent,StoredetailComponent,StoreproductsComponent,StoreCheckoutComponent,OrderCartComponent,AllGrocerystoresComponent,MainScreenComponentComponent,CartComponent,RestaurantComponent,RestaurantDetailComponent,OrderCartComponent,CheckoutComponent]
+  declarations: [HomeModuleComponent,StorecartComponent,MyordersstoreComponent,StoredetailComponent,StoreproductsComponent,StoreCheckoutComponent,OrderCartComponent,AllGrocerystoresComponent,MainScreenComponentComponent,CartComponent,RestaurantComponent,RestaurantDetailComponent,OrderCartComponent,CheckoutComponent]
 })
 export class HomeModuleModule { }

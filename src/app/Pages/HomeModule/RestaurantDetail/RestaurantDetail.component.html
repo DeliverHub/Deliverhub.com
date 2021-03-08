@@ -14,7 +14,7 @@
                    [src]="imagepath+resturants.kitchen.profileImagePath"
               />
             </div>
-          <h1>{{resturants?.kitchen.restaurant_Name}}</h1>
+          <h1>{{resturants?.kitchen.kitchen_Name}}</h1>
         </div>
       </div>
     </div>
@@ -27,10 +27,10 @@
   
       <div class="branch-item">
 <span class="rating">5.0</span>
-<h2>{{resturants?.kitchen.restaurant_Name}}</h2>
+<h2>{{resturants?.kitchen.kitchen_Name}}</h2>
 <p class="address mb-4">{{resturants?.kitchen.restaurant_About}}</p>
 <div class="d-flex justify-content-between">
-  <a href="javascript:void(0)" onclick="showonMap('24.862612','67.055393')" class="btn btn-map">View on Map</a>
+  
   <a  (click)="Proceed()"   class="btn btn-order">Order Now</a>
 </div>
 </div>
@@ -46,5 +46,6 @@
   </div>
 </div>
   </main>
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#f40a0a" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Deliver Hub </p></ngx-spinner>
 
  

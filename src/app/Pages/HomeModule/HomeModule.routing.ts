@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './Checkout/Checkout.component';
 import { AllGrocerystoresComponent } from './Grocerystore/AllGrocerystores/AllGrocerystores.component';
+import { MyordersstoreComponent } from './Grocerystore/myordersstore/myordersstore.component';
 import { StoreCheckoutComponent } from './Grocerystore/storeCheckout/storeCheckout.component';
 import { StoredetailComponent } from './Grocerystore/storedetail/storedetail.component';
 import { StoreproductsComponent } from './Grocerystore/Storeproducts/Storeproducts.component';
@@ -23,6 +24,10 @@ const routes: Routes = [
    { 
     path:"restaurant/detail",
     component:RestaurantDetailComponent
+   },
+   { 
+    path:"myorders",
+    component:MyordersstoreComponent
    },
    { 
     path:"restaurant/cart",

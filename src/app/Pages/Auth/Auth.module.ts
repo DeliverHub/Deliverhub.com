@@ -5,6 +5,9 @@ import { LoginComponent } from './Login/Login.component';
 import { AuthModuleRouting } from './AuthRout.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Register } from '../../../../src/app/Models/Register';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSnackBarModule } from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -12,6 +15,9 @@ import { Register } from '../../../../src/app/Models/Register';
     AuthModuleRouting,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
+    MatSnackBarModule
+  
   ],
   declarations: [AuthComponent,LoginComponent],
   providers:[Register]

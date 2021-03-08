@@ -10,6 +10,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchbarComponent } from './Pages/Searchbar/Searchbar.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,7 @@ import { SearchbarComponent } from './Pages/Searchbar/Searchbar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-  
+    NgxSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCUG8nuf7xCD2P8Sc8eQ9C63MQhB48S1Dk'
     }),

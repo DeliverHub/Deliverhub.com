@@ -88,7 +88,7 @@
                         <p class="price"> &#163;{{item1?.dishPrice}}</p>
                         <br>
                         <button class="btn btn-secondary btn-add"
-                        (click)="addtocart(item1.dishId)">
+                        (click)="addtocart(item1.dishId,item.menucategoreyId)">
                         <img src="assets/images/icons/plus.svg" alt="">
                         </button>
                         </div>
@@ -286,3 +286,6 @@
        </div>
     </div>
  </div>
+ <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#f40a0a" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Deliver Hub </p></ngx-spinner>
+
+ 

@@ -5,7 +5,7 @@ import { ProductOrder } from 'src/app/Models/ProductOrder';
 import { ProductOrderDto } from 'src/app/Models/ProductOrderDto';
 import { OrderService } from 'src/app/_service/Order.service';
 import { environment } from 'src/environments/environment';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-storeCheckout',
   templateUrl: './storeCheckout.component.html',
@@ -47,9 +47,13 @@ export class StoreCheckoutComponent implements OnInit {
        this.cart.Order=this.Order;
        var obj={"allorder":this.cart.allorder,"POrder":this.cart.Order,"POrderItems":this.cart.OrderItems,"POrderBilling":this.cart.OrderBilling}
        console.log(obj)
+       Swal.fire('Thank you...', 'Order has been placed Successfully!', 'success')
+
+
     this.orderservice.PostOrder(obj).subscribe((next:any)=>{
       console.log(next);
       this.clearcart();
+      this.router.navigate(['/home']);
     }
     );
     }

@@ -14,6 +14,7 @@ import { Menucategorey } from 'src/app/Models/menucategorey';
 import { ResturantService } from 'src/app/_service/resturant.service';
 import { Allorder } from 'src/app/Models/Allorder';
 import { FoodOrder } from 'src/app/Models/FoodOrder';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -24,7 +25,7 @@ import { FoodOrder } from 'src/app/Models/FoodOrder';
 })
 export class OrderCartComponent implements OnInit {
 
-  constructor(public dialog: MatDialog,private data: DataShareService,private resturanrservice:ResturantService,private router: Router) { 
+  constructor(private spinner: NgxSpinnerService,public dialog: MatDialog,private data: DataShareService,private resturanrservice:ResturantService,private router: Router) { 
     // private modalService: NgbModal,private config: NgbModalConfig
     // config.backdrop = 'static';
     // config.keyboard = false;
@@ -49,17 +50,21 @@ previouscart:FoodOrderDto={}as FoodOrderDto;
   searchname:any;
   searchedMenu:Menucategorey[];
   ngOnInit() {
-    debugger;
+   
     this.getdelivery();
     this.resturants=null;
     this.subscription = this.data.currentMessage.subscribe(message => this.resturants = message);
+    
     if(this.resturants==null){
       var restaurantid=localStorage.getItem('restaurantid')
       if(restaurantid!=""||restaurantid!=undefined||restaurantid!=null){
+        this.spinner.show();
 this.resturanrservice.Getrestaurantdishes(restaurantid).subscribe((nex:any)=>{
   debugger;
+
   console.log(nex);
   this.resturants=nex.res;
+  this.spinner.hide();
 }, error => {
   console.log(error);
 })
@@ -107,10 +112,10 @@ var lng2=parseFloat(lltt2[1]);
       console.log(`Dialog result: ${result}`);
     });
   }
-  addtocart(id){
+  addtocart(id,cid){
     debugger;
     this.previouscart=JSON.parse(localStorage.getItem('cart'))as FoodOrderDto;
-    this.catdishes= this.resturants.menucategorey.filter(x=>x.dishes.filter(s=>s.dishId==id));
+    this.catdishes= this.resturants.menucategorey.filter(x=>x.menucategoreyId==cid);
     var data=this.catdishes[0].dishes.filter(x=>x.dishId==id);
    
 
@@ -142,7 +147,9 @@ var lng2=parseFloat(lltt2[1]);
         {
         this.ttl=this.ttl+this.previouscart.OrderItems[i].TotalPrice;
         }
-        this.foodorderbilling.Delivery_Charges=this.distance*this.restaurantdeliveryfair.deliveryCharges;
+       
+        var delvery=(this.distance*this.restaurantdeliveryfair.deliveryCharges).toFixed(2);
+this.foodorderbilling.Delivery_Charges=parseFloat(delvery);
         this.foodorderbilling.GrandTotal=this.foodorderbilling.Delivery_Charges+this.ttl;
         this.foodorderbilling.Total_SumAmount=this.ttl;
         this.foodorderbilling.Subtotal=this.ttl;
@@ -154,7 +161,7 @@ this.cart.Order=this.Order;
 
       }
       else{
-        this.catdishes= this.resturants.menucategorey.filter(x=>x.dishes.filter(s=>s.dishId==id));
+        this.catdishes= this.resturants.menucategorey.filter(x=>x.menucategoreyId==cid);
         var ndata= this.catdishes[0].dishes.filter(x=>x.dishId==id);
         this.ttl=0
         this.orderitem.DishId=ndata[0].dishId;
@@ -171,7 +178,8 @@ this.foodorderitemlist.push(this.orderitem);
         {
         this.ttl=this.ttl+this.cart.OrderItems[i].TotalPrice;
         }
-        this.foodorderbilling.Delivery_Charges=this.distance*this.restaurantdeliveryfair.deliveryCharges;
+        var delvery=(this.distance*this.restaurantdeliveryfair.deliveryCharges).toFixed(2);
+        this.foodorderbilling.Delivery_Charges=parseFloat(delvery);
         this.foodorderbilling.GrandTotal=this.foodorderbilling.Delivery_Charges+this.ttl;
         this.foodorderbilling.Total_SumAmount=this.ttl;
         this.foodorderbilling.Subtotal=this.ttl;
@@ -212,7 +220,8 @@ addsingleitemincart(data){
   {
   this.ttl=this.ttl+this.foodorderitemlist[i].TotalPrice;
     }
-    this.foodorderbilling.Delivery_Charges=this.distance*this.restaurantdeliveryfair.deliveryCharges;
+    var delvery=(this.distance*this.restaurantdeliveryfair.deliveryCharges).toFixed(2);
+    this.foodorderbilling.Delivery_Charges=parseFloat(delvery);
     this.foodorderbilling.GrandTotal=this.foodorderbilling.Delivery_Charges+this.ttl;
    this.foodorderbilling.Total_SumAmount=this.ttl;
    this.foodorderbilling.Subtotal=this.ttl;

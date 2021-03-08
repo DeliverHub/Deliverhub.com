@@ -49,7 +49,7 @@ var lng1=parseFloat(lltt[1]);
 //this.foodorderbilling.Delivery_Charges=(Math.round(parseFloat(localStorage.getItem('deliverycharges'))+ Number.EPSILON) * 100) / 100;
 var delvery=parseFloat(localStorage.getItem('deliverycharges')).toFixed(2);
 this.foodorderbilling.Delivery_Charges=parseFloat(delvery);
-this.foodorderbilling.Delivery_Charges.toFixed(2);
+//this.foodorderbilling.Delivery_Charges.toFixed(2);
 this.foodorderbilling.GrandTotal=this.foodorderbilling.Delivery_Charges+this.ttl;
           this.foodorderbilling.Total_SumAmount=this.ttl;
           this.foodorderbilling.Subtotal=this.ttl;
@@ -73,7 +73,8 @@ this.cart.Order=this.Order;
             this.ttl=this.ttl+this.cart.OrderItems[i].TotalPrice;
             }
   
-            this.foodorderbilling.Delivery_Charges=parseFloat(localStorage.getItem('deliverycharges'));
+            var delvery=parseFloat(localStorage.getItem('deliverycharges')).toFixed(2);
+            this.foodorderbilling.Delivery_Charges=parseFloat(delvery);
             this.foodorderbilling.GrandTotal=this.foodorderbilling.Delivery_Charges+this.ttl;
             this.foodorderbilling.Total_SumAmount=this.ttl;
             this.foodorderbilling.Subtotal=this.ttl;
@@ -102,7 +103,8 @@ this.cart.Order=this.Order;
           this.ttl=this.ttl+this.cart.OrderItems[i].TotalPrice;
           }
 
-          this.foodorderbilling.Delivery_Charges=parseFloat(localStorage.getItem('deliverycharges'));
+          var delvery=parseFloat(localStorage.getItem('deliverycharges')).toFixed(2);
+          this.foodorderbilling.Delivery_Charges=parseFloat(delvery);
           this.foodorderbilling.GrandTotal=this.foodorderbilling.Delivery_Charges+this.ttl;
           this.foodorderbilling.Total_SumAmount=this.ttl;
           this.foodorderbilling.Subtotal=this.ttl;

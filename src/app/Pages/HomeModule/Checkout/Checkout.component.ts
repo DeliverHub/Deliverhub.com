@@ -2,13 +2,14 @@ import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Allorder } from 'src/app/Models/Allorder';
 import { FoodOrder } from 'src/app/Models/FoodOrder';
 import { FoodOrderDto } from 'src/app/Models/FoodOrderDto';
 import { OrderService } from 'src/app/_service/Order.service';
 import { environment } from 'src/environments/environment';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-Checkout',
   templateUrl: './Checkout.component.html',
@@ -24,7 +25,7 @@ export class CheckoutComponent implements OnInit {
   allorder:Allorder={}as Allorder;
   Order:FoodOrder={} as FoodOrder;
   imagepath=environment.imagepath+"Restaurantprofile/";
-  constructor(private orderservice:OrderService,private router: Router) { }
+  constructor(private spinner: NgxSpinnerService,private orderservice:OrderService,private router: Router) { }
 
   ngOnInit() {
     debugger;
@@ -46,15 +47,19 @@ export class CheckoutComponent implements OnInit {
       this.allorder.Address=localStorage.getItem('address');
       this.allorder.OrderType="Restaurant";
       this.allorder.PaymentType="Cash";
-      this.allorder.Consumer_Id=parseInt(localStorage.getItem('ID'));
+      this.allorder.Consumer_Id=0;
       this.cart.allorder=this.allorder;
+   
       this.Order.RestaurantID=parseInt(localStorage.getItem('restaurantid'));
       this.cart.Order=this.Order;
       var obj={"allorder":this.cart.allorder,"Order":this.cart.Order,"OrderItems":this.cart.OrderItems,"OrderBilling":this.cart.OrderBilling}
-     
+   
    this.orderservice.PostOrder(obj).subscribe((next:any)=>{
+   
+    Swal.fire('Thank you...', 'Order has been placed Successfully!', 'success')
     this.clearcart();
-    alert("Order Successfully placed");
+
+    this.router.navigate(['/home']);
    }
    );
     }

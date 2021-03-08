@@ -7,6 +7,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { DataShareService } from './../../../../src/app/_service/DataShare.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare let google: any;
 @Component({
   selector: 'app-HomeModule',
@@ -29,7 +30,7 @@ export class HomeModuleComponent implements OnInit {
   modalOptions:NgbModalOptions;
   rqsttype:string="";
   @ViewChild("loc",{static:false}) block: ElementRef;
-  constructor(private mapsAPILoader: MapsAPILoader,private modalService: NgbModal,public dialog: MatDialog,private data: DataShareService, private router: Router) {
+  constructor(private spinner: NgxSpinnerService,private mapsAPILoader: MapsAPILoader,private modalService: NgbModal,public dialog: MatDialog,private data: DataShareService, private router: Router) {
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
@@ -38,7 +39,12 @@ export class HomeModuleComponent implements OnInit {
 
   ngOnInit() {
   
-  
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 500);
   }
   openDialog(content) {
     this.GetCurrentLocation();

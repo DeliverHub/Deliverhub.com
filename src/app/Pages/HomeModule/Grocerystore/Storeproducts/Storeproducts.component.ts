@@ -114,10 +114,10 @@ console.log(this.distance);
       console.log(`Dialog result: ${result}`);
     });
   }
-  addtocart(id){
+  addtocart(id,cid){
     debugger;
     this.previouscart=JSON.parse(localStorage.getItem('cart'))as ProductOrderDto;
-    this.catproducts= this.stores.productCategorey.filter(x=>x.products.filter(s=>s.productId==id));
+    this.catproducts= this.stores.productCategorey.filter(x=>x.categoreyId==cid);
     var data=this.catproducts[0].products.filter(x=>x.productId==id);
    
 
@@ -163,7 +163,7 @@ this.cart.Order=this.Order;
 
         }
         else{
-          this.catproducts= this.stores.productCategorey.filter(x=>x.products.filter(s=>s.productId==id));
+          this.catproducts= this.stores.productCategorey.filter(x=>x.categoreyId==cid);
           var ndata= this.catproducts[0].products.filter(x=>x.productId==id);
           this.ttl=0
           this.orderitem.ProductId=ndata[0].productId;

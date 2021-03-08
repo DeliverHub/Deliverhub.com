@@ -1,6 +1,7 @@
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { GetstoreDto } from 'src/app/Models/GetstoreDto';
 import { DataShareService } from 'src/app/_service/DataShare.service';
 import { GroceryService } from 'src/app/_service/grocery.service';
@@ -14,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class AllGrocerystoresComponent implements OnInit {
   allgroceries: GetstoreDto[];
   imagepath=environment.imagepath+"StoreImages/";
-  constructor(private route: ActivatedRoute,private  groceryservice:GroceryService, private data: DataShareService, private router: Router) { }
+  constructor(private spinner: NgxSpinnerService,private route: ActivatedRoute,private  groceryservice:GroceryService, private data: DataShareService, private router: Router) { }
  ngOnInit()
  {
   this.getstores();
@@ -22,12 +23,12 @@ export class AllGrocerystoresComponent implements OnInit {
   getstores(){
     debugger;
     var latlng=localStorage.getItem('latlng');
-    
+    this.spinner.show();
       this.groceryservice.GetGrocerystores(latlng).subscribe((next:any) => {
         debugger;
         this.allgroceries=next.res;
         console.log(this.allgroceries)
-
+        this.spinner.hide();
         
       }, error => {
         console.log(error);

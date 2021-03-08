@@ -5,6 +5,7 @@ import { ResturantService } from '../../../../../src/app/_service/resturant.serv
 import { Subscription } from 'rxjs';
 import { DataShareService } from './../../../../../src/app/_service/DataShare.service';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-Restaurant',
@@ -18,7 +19,7 @@ export class RestaurantComponent implements OnInit {
   subscription: Subscription;
   restaurantname:any;
   imagepath=environment.imagepath+"Restaurantprofile/";
-  constructor(private resturanrservice:ResturantService,private route: ActivatedRoute,private data: DataShareService, private router: Router) { }
+  constructor(private spinner: NgxSpinnerService,private resturanrservice:ResturantService,private route: ActivatedRoute,private data: DataShareService, private router: Router) { }
 
   ngOnInit() {
 
@@ -43,12 +44,12 @@ export class RestaurantComponent implements OnInit {
   getresturants(){
     debugger;
     var latlng=localStorage.getItem('latlng');
-    
+    this.spinner.show();
       this.resturanrservice.GetResturants(latlng).subscribe((next:any) => {
         debugger;
         this.resturants=next.res;
 this.searchresturants=next.res;
-        
+this.spinner.hide();
       }, error => {
         console.log(error);
       });
